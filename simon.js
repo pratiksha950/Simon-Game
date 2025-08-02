@@ -16,7 +16,7 @@ document.addEventListener("keypress",function(){
 function gameFlash(btn){
     btn.classList.add("flash");
     setTimeout(function(){
-        btn.classList.remove("flash");
+    btn.classList.remove("flash");
     },250)
 }
 
@@ -30,7 +30,7 @@ function levelUp(){
     level++;
     h2.innerText=`level ${level}`;
 
-    let randomIdx=Math.floor(Math.random()*3);
+    let randomIdx=Math.floor(Math.random()*btns.length);
     let randomColor=btns[randomIdx];
     let randomBtn=document.querySelector(`.${randomColor}`);
     // console.log(randomIdx);
@@ -40,12 +40,26 @@ function levelUp(){
     console.log(gameSequence);
     gameFlash(randomBtn);
 }
+    function checkAns(){
+        // console.log("current level:",level);
+        let idx=level-1;
+        if(UserSequence[idx]==gameSequence[idx]){
+            console.log("same value");
+        }else{
+            // h2.innerText=`Game over ${level}`
+            h2.innerText="Game over! press any key";
+        }
+    }
+
+
 function btnPress(){
     let btn=this;
     userFlash(btn);
 
     userColor=btn.getAttribute("id");
+    UserSequence.push(userColor);
     console.log(userColor);
+    checkAns();
 
 }
 let allBtns=document.querySelectorAll(".btn");
