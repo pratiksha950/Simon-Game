@@ -27,6 +27,7 @@ function userFlash(btn){
     },250)
 }
 function levelUp(){  
+    userSequence=[];
     level++;
     h2.innerText=`level ${level}`;
 
@@ -40,12 +41,13 @@ function levelUp(){
     console.log(gameSequence);
     gameFlash(randomBtn);
 }
-    function checkAns(){
+    function checkAns(idx){
         // console.log("current level:",level);
-        let idx=level-1;
+        
         if(userSequence[idx]==gameSequence[idx]){
             if(userSequence.length==gameSequence.length){
-                levelUp();
+                setTimeout(levelUp,1000);
+                
             }
             
             console.log("same value");
@@ -63,7 +65,7 @@ function btnPress(){
     let userColor=btn.getAttribute("id");
     userSequence.push(userColor);
     console.log(userColor);
-    checkAns();
+    checkAns(userSequence.length-1);
 
 }
 let allBtns=document.querySelectorAll(".btn");
