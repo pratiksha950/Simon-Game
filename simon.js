@@ -1,5 +1,5 @@
 let gameSequence=[];
-let UserSequence=[];
+let userSequence=[];
 let btns=["yellow","red","purple","green"];
 
 let started=false;
@@ -43,7 +43,11 @@ function levelUp(){
     function checkAns(){
         // console.log("current level:",level);
         let idx=level-1;
-        if(UserSequence[idx]==gameSequence[idx]){
+        if(userSequence[idx]==gameSequence[idx]){
+            if(userSequence.length==gameSequence.length){
+                levelUp();
+            }
+            
             console.log("same value");
         }else{
             // h2.innerText=`Game over ${level}`
@@ -56,8 +60,8 @@ function btnPress(){
     let btn=this;
     userFlash(btn);
 
-    userColor=btn.getAttribute("id");
-    UserSequence.push(userColor);
+    let userColor=btn.getAttribute("id");
+    userSequence.push(userColor);
     console.log(userColor);
     checkAns();
 
