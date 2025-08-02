@@ -54,14 +54,12 @@ function levelUp(){
         }else{
             // h2.innerText=`Game over ${level}`
             h2.innerText="Game over! press any key";
+            reset();
         }
     }
-
-
 function btnPress(){
     let btn=this;
     userFlash(btn);
-
     let userColor=btn.getAttribute("id");
     userSequence.push(userColor);
     console.log(userColor);
@@ -71,6 +69,12 @@ function btnPress(){
 let allBtns=document.querySelectorAll(".btn");
 for(let btn of allBtns){
     btn.addEventListener("click",btnPress);
+}
+function reset(){
+    started=false;
+    gameSequence=[];
+    userSequence=[];
+    level=0;
 }
 
 
