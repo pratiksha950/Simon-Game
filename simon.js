@@ -41,22 +41,24 @@ function levelUp(){
     console.log(gameSequence);
     gameFlash(randomBtn);
 }
-    function checkAns(idx){
-        // console.log("current level:",level);
-        
-        if(userSequence[idx]==gameSequence[idx]){
-            if(userSequence.length==gameSequence.length){
-                setTimeout(levelUp,1000);
-                
-            }
+function checkAns(idx){
+    // console.log("current level:",level);
+    
+    if(userSequence[idx]==gameSequence[idx]){
+        if(userSequence.length==gameSequence.length){
+            setTimeout(levelUp,1000);
             
-            console.log("same value");
-        }else{
-            // h2.innerText=`Game over ${level}`
-            h2.innerText="Game over! press any key";
-            reset();
         }
+    }else{
+        // h2.innerText=`Game over ${level}`
+        h2.innerHTML=`Game over! Your Score was <b>${level}</b><br> Press any key toStart`;
+        document.querySelector("body").style.backgroundColor="red";
+        setTimeout(function(){
+        document.querySelector("body").style.backgroundColor="white";
+        },200)
+        reset();
     }
+}
 function btnPress(){
     let btn=this;
     userFlash(btn);
@@ -64,7 +66,6 @@ function btnPress(){
     userSequence.push(userColor);
     console.log(userColor);
     checkAns(userSequence.length-1);
-
 }
 let allBtns=document.querySelectorAll(".btn");
 for(let btn of allBtns){
