@@ -32,16 +32,20 @@ function levelUp(){
 
     let randomIdx=Math.floor(Math.random()*3);
     let randomColor=btns[randomIdx];
-    let randomBtn=document.querySelector(`.${randomColor}`)
-    console.log(randomIdx);
-     console.log(randomColor);
-     console.log(randomBtn);
-     gameFlash(randomBtn);
-        
+    let randomBtn=document.querySelector(`.${randomColor}`);
+    // console.log(randomIdx);
+    // console.log(randomColor);
+    // console.log(randomBtn);
+    gameSequence.push(randomColor);
+    console.log(gameSequence);
+    gameFlash(randomBtn);
 }
 function btnPress(){
     let btn=this;
     userFlash(btn);
+
+    userColor=btn.getAttribute("id");
+    console.log(userColor);
 
 }
 let allBtns=document.querySelectorAll(".btn");
